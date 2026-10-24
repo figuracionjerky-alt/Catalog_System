@@ -127,7 +127,7 @@ export default function Admin() {
           <section className="panel admin__form" aria-labelledby="form-title">
             <div className="panel__head">
               <h2 id="form-title">
-                {editingId ? "Edit the Product" : "Magdagdag ng Product"}
+                {editingId ? "Edit Product" : "Add Product"}
               </h2>
             </div>
             <form className="panel__body form-stack" onSubmit={handleSubmit}>
