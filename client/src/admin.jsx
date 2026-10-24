@@ -127,20 +127,20 @@ export default function Admin() {
           <section className="panel admin__form" aria-labelledby="form-title">
             <div className="panel__head">
               <h2 id="form-title">
-                {editingId ? "I-edit ang Product" : "Magdagdag ng Product"}
+                {editingId ? "Edit the Product" : "Magdagdag ng Product"}
               </h2>
             </div>
             <form className="panel__body form-stack" onSubmit={handleSubmit}>
               <div className="field">
-                <label htmlFor="p-name">Pangalan</label>
+                <label htmlFor="p-name">Product Name</label>
                 <input id="p-name" className="input" value={name} onChange={(e) => setName(e.target.value)} required />
               </div>
               <div className="field">
-                <label htmlFor="p-price">Presyo (€)</label>
+                <label htmlFor="p-price">Price (€)</label>
                 <input id="p-price" className="input mono" type="number" inputMode="decimal" step="0.01" min="0" value={price} onChange={(e) => setPrice(e.target.value)} required />
               </div>
               <div className="field">
-                <label htmlFor="p-image">Link ng picture</label>
+                <label htmlFor="p-image">Picture Link</label>
                 <input id="p-image" className="input" type="url" inputMode="url" value={image} onChange={(e) => setImage(e.target.value)} required />
               </div>
               <div className="field">
@@ -153,7 +153,7 @@ export default function Admin() {
               </div>
               <div className="form-actions">
                 <button type="submit" className="btn btn--primary">
-                  {editingId ? "I-save ang Changes" : "Add Product"}
+                  {editingId ? "Save Changes" : "Add Product"}
                 </button>
                 {editingId && (
                   <button type="button" className="btn" onClick={resetForm}>
@@ -170,7 +170,7 @@ export default function Admin() {
                 <h2 id="products-title">Products</h2>
               </div>
               {products.length === 0 ? (
-                <p className="empty">Wala pang product. Magdagdag gamit ang form.</p>
+                <p className="empty">No product yet. Add using the form</p>
               ) : (
                 <ul className="rows">
                   {products.map((p) => (
@@ -178,21 +178,21 @@ export default function Admin() {
                       <img className="row__thumb" src={p.image} alt="" loading="lazy" />
                       <div className="row__info">
                         <h3 className="row__name">{p.name}</h3>
-                        <p className="row__meta">{p.category || "Walang category"}</p>
+                        <p className="row__meta">{p.category || "No Category"}</p>
                       </div>
                       <p className="row__price">{euro(p.price)}</p>
                       <div className="row__actions">
                         <button
                           className="btn btn--sm"
                           onClick={() => startEdit(p)}
-                          aria-label={`I-edit ang ${p.name}`}
+                          aria-label={`Edit the ${p.name}`}
                         >
                           Edit
                         </button>
                         <button
                           className="btn btn--sm btn--danger"
                           onClick={(e) => openDialog(p, e.currentTarget)}
-                          aria-label={`I-delete ang ${p.name}`}
+                          aria-label={`Delete the ${p.name}`}
                         >
                           Delete
                         </button>
@@ -220,7 +220,7 @@ export default function Admin() {
           >
             <h2 id="del-title">Are you sure?</h2>
             <p id="del-desc">
-              Buburahin mo ang "{deleteTarget.name}". Hindi na ito maibabalik.
+              You will remove "{deleteTarget.name}". This cannot be undone.
             </p>
             <div className="dialog__actions">
               <button ref={cancelRef} className="btn" onClick={closeDialog}>
