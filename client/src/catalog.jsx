@@ -145,7 +145,7 @@ export default function Catalog() {
                     <div className="card__body">
                       <h2 className="card__name">{p.name}</h2>
                       <p className="card__meta">{p.category || "Others"}</p>
-                      <p className="card__price">{peso(p.price)}</p>
+                      <p className="card__price">{euro(p.price)}</p>
                     </div>
                   </li>
                 ))}
